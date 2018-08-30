@@ -14,7 +14,14 @@ client.on('open', () => console.log('Connection opened.'));
 client.on('close', () => console.log('Connection closed.'));
 client.on('initialize', () => console.log('Client initialized, data is flowing.'));
 
-client.addStream('XBTUSD', 'execution', function(data, symbol, tableName) {
-  console.log(`Got update for ${tableName}:${symbol}. Current state:\n${JSON.stringify(data).slice(0, 100)}...`);
+client.addStream('*', 'execution', function(data, symbol, tableName) {
+  //console.log(`Got update for ${tableName}:${symbol}. Current state:\n${JSON.stringify(data).slice(0, 100)}...`);
   // Do something with the table data...
+  console.log('Got Something:', tableName, symbol)
 });
+
+// client.addStream('XBTUSD', 'orderBookL2', function(data, symbol, tableName) {
+//   //console.log(`Got update for ${tableName}:${symbol}. Current state:\n${JSON.stringify(data).slice(0, 100)}...`);
+//   // Do something with the table data...
+//   console.log('Got Something:', tableName, symbol)
+// });
